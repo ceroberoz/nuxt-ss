@@ -10,33 +10,18 @@
         <!-- Your title bar content here -->
       </div>
       <div class="mac-content">
-        <textarea class="mac-textarea" ref="textarea" @input="adjustTextareaSize"></textarea>
+        <!-- Your content here -->
+        <MonacoEditor lang="typescript" :options="{ minimap: {enabled: false}, lineNumbers: 'off'}" />
       </div>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  methods: {
-    adjustTextareaSize() {
-      this.$nextTick(() => {
-        const textarea = this.$refs.textarea;
-        textarea.style.width = 'auto'; // Reset the width first
-        textarea.style.height = 'auto'; // Reset the height first
-        textarea.style.width = `${textarea.scrollWidth}px`; // Set the width based on content
-        textarea.style.height = `${textarea.scrollHeight}px`; // Set the height based on content
-      });
-    },
-  },
-};
-</script>
-
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Hack:wght@400;700&display=swap');
 
 .mac-window {
-  width: 800px;
+  width: 80vw;
   background-color: #f6f6f6;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
@@ -49,7 +34,6 @@ export default {
   padding: 8px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  grid-column: 1 / span 3; /* Span across all 3 columns */
   display: flex;
   align-items: center;
 }
@@ -80,19 +64,7 @@ export default {
 .mac-content {
   padding: 16px;
   display: flex;
-  justify-content: flex-start; /* Left-align content */
-}
-
-.mac-textarea {
-  width: 100%;
-  padding: 8px;
-  border: none;
-  resize: none;
-  font-family: 'Hack', monospace;
-  font-size: 14px;
-  background-color: transparent;
-  color: #333333;
-
-  min-height: 10em;
+  justify-content: flex-start;
+  /* Add any necessary styles for the content inside mac-window */
 }
 </style>
